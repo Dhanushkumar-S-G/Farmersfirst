@@ -1,0 +1,286 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous">
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap" rel="stylesheet" />
+
+    <link rel="shortcut icon" href="{% static 'cart/images/favicon.ico'%}" type="image/x-icon" />
+
+    <!-- Carousel -->
+    <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.core.min.css" />
+    <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.theme.min.css" />
+
+    <!-- Animate On Scroll -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+    <!-- Custom StyleSheet -->
+    <link rel="stylesheet" href="{% static 'home/css/styles.css' %}" />
+
+    <title>Cart</title>
+</head>
+
+<body>
+    <header id="header" class="header">
+        <div class="navigation">
+            <div class="container">
+                <nav class="nav">
+                    <div class="nav__hamburger">
+                        <i class="fa fa-bars" style="color:#b0fc38" aria-hidden="true"></i>
+                    </div>
+
+                    <div class="nav__logo">
+                        <a href="/" style="color:green;" class="scroll-link">
+                            FARMERS FIRST
+                        </a>
+                    </div>
+
+                    <div class="nav__menu">
+                        <div class="menu__top">
+                            <span class="nav__category">FARMERS FIRST</span>
+                            <a href="#" class="close__toggle">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <ul class="nav__list">
+                            <li class="nav__item">
+                                <a href="/{{username}}" class="nav__link">Home</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="/{{username}}/product" class="nav__link">Products</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="#" class="nav__link">Blog</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="https://farmersfirst.tribeplatform.com/community-fourm-ibppqdak/post" class="nav__link ">Community</a>
+                              </li>
+                        </ul>
+                    </div>
+
+                    <div class="nav__icons">
+                        <a href="/{{username}}" class="icon__item" style = "border: none; background-color: white;">
+                            {{username}} 
+                        </a>
+
+                        <a href="#" class="icon__item">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </a>
+                        <a href="/" class="icon__item">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </a>
+
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <div class="page__title-area">
+            <div class="container">
+                <div class="page__title-container">
+                    <ul class="page__titles">
+                        <li>
+                            <a href="/{{username}}">
+                                <svg>
+                                    <use xlink:href="{% static ' home/images/sprite.svg#icon-home' %}"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="section cart__area">
+            <div class="container">
+                <div class="responsive__cart-area">
+                    <form class="cart__form">
+                        <div class="cart__table table-responsive">
+                            <table width="100%" class="table">
+                                <thead>
+                                    <tr>
+                                        <th>PRODUCT NAME</th>
+                                        <th>UNIT PRICE</th>
+                                        <th>QUANTITY</th>
+                                        <th>PHONE NUMBER</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        {%for item in items %}
+                                        <td class="product__name">
+                                            <a href="/{{username}}/product/view/{{item.productname}}">{{item.productname}}</a>
+                                            <br><br>
+                                        </td>
+                                        <td class="product__price">
+                                            <div class="price">
+                                                <span class="new__price">₹ {{item.price}}</span>
+                                            </div>
+                                        </td>
+                                        <td class="product__quantity">
+                                            <div class="input-counter">
+                                                <div>
+                                                    <span class="new__price">{{item.quantity}}</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="product__subtotal">
+                                            <div class="price">
+                                                <span class="new__price">{{phone_number}}</span>
+                                            </div>
+                                                
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {%endfor%}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="cart-btns">
+                            <div class="continue__shopping">
+                                <a href="/{{username}}/product">Continue Shopping</a>
+                            </div>
+                        </div>
+                        </form>
+                        </div>
+                        </div>
+                        </section>
+                        </main>
+
+                        
+
+        <!-- Facility Section -->
+        <section class="facility__section section" id="facility">
+            <div class="container">
+                <div class="facility__contianer">
+                    <div class="facility__box">
+                        <div class="facility-img__container">
+                            <i class='fas fa-plane-departure' style='font-size:36px'></i>
+                        </div>
+                        <p>FREE SHIPPING WORLD WIDE</p>
+                    </div>
+
+                    <div class="facility__box">
+                        <div class="facility-img__container">
+                            <i class="fa fa-credit-card-alt" style="font-size:36px"></i>
+                        </div>
+                        <p>100% MONEY BACK GUARANTEE</p>
+                    </div>
+
+                    <div class="facility__box">
+                        <div class="facility-img__container">
+                            <i class="fa fa-money" style="font-size:36px"></i>
+                        </div>
+                        <p>MANY PAYMENT GATWAYS</p>
+                    </div>
+
+                    <div class="facility__box">
+                        <div class="facility-img__container">
+                            <i class="fa fa-clock-o" style="font-size:36px" aria-hidden="true"></i>
+                        </div>
+                        <p>24/7 ONLINE SUPPORT</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="section footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer-top__box">
+                    <h3>EXTRAS</h3>
+                    <a href="#">Brands</a>
+                    <a href="#">Gift Certificates</a>
+                    <a href="#">Affiliate</a>
+                    <a href="#">Specials</a>
+                    <a href="#">Site Map</a>
+                </div>
+                <div class="footer-top__box">
+                    <h3>INFORMATION</h3>
+                    <a href="#">About Us</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Site Map</a>
+                </div>
+                <div class="footer-top__box">
+                    <h3>MY ACCOUNT</h3>
+                    <a href="#">My Account</a>
+                    <a href="#">Order History</a>
+                    <a href="#">Wish List</a>
+                    <a href="#">Newsletter</a>
+                    <a href="#">Returns</a>
+                </div>
+                <div class="footer-top__box">
+                    <h3>CONTACT US</h3>
+                    <div>
+                        <span>
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        </span>
+                        KUMARAGURU COLLEGE OF TECHNOLOGY, TAMILNADU ,INDIA.
+                    </div>
+                    <div>
+                        <span>
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                        Agrisales@outlook.com
+                    </div>
+                    <div>
+                        <span>
+                            <i class='fas fa-phone-alt'></i>
+                        </span>
+                        00000001
+                    </div>
+                    <div>
+                        <span>
+                            <i class="fa fa-paper-plane-o"></i>
+                        </span>
+                        KUMARAGURU COLLEGE OF TECHNOLOGY, COIMBATORE.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <div class="footer-bottom__box">
+
+            </div>
+            <div class="footer-bottom__box">
+
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- End Footer -->
+
+    <!-- Go To -->
+
+    <a href="#header" class="goto-top scroll-link">
+        <i class="fa fa-angle-double-up" style="color:white"></i>
+    </a>
+
+    <!-- Glide Carousel Script -->
+    <script src="node_modules/@glidejs/glide/dist/glide.min.js"></script>
+
+    <!-- Animate On Scroll -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="{%static 'home/js/products.js' %}"></script>
+    <script src="{%static 'home/js/index.js' %}"></script>
+    <script src="{%static 'home/js/slider.js' %}"></script>
+</body>
+
+</html>

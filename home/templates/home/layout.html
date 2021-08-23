@@ -1,0 +1,2405 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script
+      src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous">
+    </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap" rel="stylesheet" />
+
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{% static 'home/images/favicon.ico' %}" type="image/x-icon" />
+
+  <!--Gliders Carousel-->
+  <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.core.min.css" />
+  <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.theme.min.css" />
+
+  <!-- Carousel -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.min.css
+">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <!-- Custom StyleSheet -->
+  <link rel="stylesheet" href="{% static 'home/css/styles.css' %}" />
+
+  <title>FarmersFirst</title>
+</head>
+
+<body>
+<!-- Header -->
+  <header id="header" class="header">
+    <div class="navigation">
+      <div class="container">
+        <nav class="nav">
+          <div class="nav__hamburger">
+            <i class="fa fa-bars" style="color:black" aria-hidden="true"></i>
+          </div>
+
+          <div class="nav__logo">
+            <a href="/" class="scroll-link"> 
+            <div class="texty">
+              FARMERS FIRST
+            </div>
+            </a>
+          </div>
+
+          <div class="nav__menu">
+            <div class="menu__top">
+              <span class="nav__category">FARMERS FIRST</span>
+              <a href="#" class="close__toggle">
+                <i class="fa fa-times" style="color:black;"aria-hidden="true"></i>
+              </a>
+            </div>
+            <ul class="nav__list">
+              <li class="nav__item">
+                <a href="#header" class="nav__link scroll-link">Home</a>
+              </li>
+              {%if username %}
+              <li class="nav__item">
+                <a href="/{{username}}/product" class="nav__link ">Category</a>
+              </li>
+              {%else%}
+              <li class="nav__item">
+                <a href="/product" class="nav__link ">Category</a>
+              </li>
+              {%endif%}
+              <li class="nav__item">
+                <a href="#news" class="nav__link scroll-link">Blog</a>
+              </li>
+              <li class="nav__item">
+                <a href="https://farmersfirst.tribeplatform.com/community-fourm-ibppqdak/post" class="nav__link ">Community</a>
+              </li>
+              {%block admin%}
+              {%endblock%}
+            </ul>
+          </div>
+
+          <div class="nav__icons">
+            {%block user%}
+            {%endblock%}
+            
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="container2">
+    <nav class="nav2">
+      {%if username%}
+      <form class="example" action="/{{username}}/product/search" method = "POST"style="margin:auto;max-width:400px">
+        {% csrf_token %}
+        <input type="text" placeholder="Search.." name="search" >
+        <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      {%else%}
+    <form class="example" action="/product/search " method = "POST"style="margin:auto;max-width:400px">
+      {% csrf_token %}
+  <input type="text" placeholder="Search.." name="search" >
+  <button type="submit"><i class="fa fa-search"></i></button>
+  </form>
+  {%endif%}
+    </nav>
+    <div id="google_translate_element"></div>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    </div>
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="glide" id="glide_1">
+        <div class="glide__track" data-glide-el="track">
+          <ul class="glide__slides">
+            <li class="glide__slide">
+              <div class="hero__center">
+                <div class="hero__left">
+                  <span class="">New Inspiration 2021</span>
+                  <h1 class="texty">FARMING MADE EASY!</h1>
+                  <p>Buy all essentials at a lower cost</p>
+                  <a href="#collection"><button class="hero__btn">FARMER</button></a>
+                </div>
+                <div class="hero__right">
+                  <div class="hero__img-container">
+                    <img class="banner_01" src="{% static 'home/images/banner_01.png' %}" alt="banner2" />
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="glide__slide">
+              <div class="hero__center">
+                <div class="hero__left">
+                  <span>New Inspiration 2021</span>
+                  <h1 style="color:green;">TRADING MADE EASY!</h1>
+                  <p>Connect directly with farmers and get products at the exact rate</p>
+                  <a href="#category"><button class="hero__btn">BUYER</button></a>
+                </div>
+                <div class="hero__right">
+                  <img class="banner_02" src="{% static 'home/images/banner_02.png' %}" alt="banner2" />
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="glide__bullets" data-glide-el="controls[nav]">
+          <button class="glide__bullet" data-glide-dir="=0"></button>
+          <button class="glide__bullet" data-glide-dir="=1"></button>
+        </div>
+
+        <div class="glide__arrows" data-glide-el="controls">
+          <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+          </button>
+          <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+</header>
+  <!-- End Header -->
+
+  <!-- Main -->
+  <main id="main">
+    <div class="container">
+      <br><br>
+
+    <!-- Collection -->
+    {%if username%}
+    <section class="section latest__products" id="latest">
+      <div class="title__container">
+        <div class="section__title active" data-id="Latest Products">
+          <span class="dot"></span>
+          <h1 class="primary__title">Exclusively for Farmers</h1>
+        </div>
+      </div>   
+      <section id="collection" class="section collection">
+        <div class="collection__container" data-aos="fade-up" data-aos-duration="1200">
+          <div class="collection__box">
+            <div class="img__container">
+            <script
+                    src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                    <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_ta6fw8qq.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+            </div>
+            <div class="collection__content">
+              <div class="collection__data">
+                <span>Start super fresh !!!</span>
+                <h1>SEEDS</h1>
+                <a href="{{username}}/product/seeds">SHOP NOW</a>
+              </div>
+            </div>
+          </div>
+          <div class="collection__box">
+            <div class="img__container">
+              <lottie-player class="collection_02" src="https://assets9.lottiefiles.com/private_files/lf30_uMKwX0.json"  background="transparent"  speed="0.25"  style="width: 250px; height: 250px;"  loop  autoplay></lottie-player>
+            </div>
+            <div class="collection__content">
+              <div class="collection__data">
+                <span>Enhance the quality !!!</span>
+                <h1>FERTILIZERS</h1>
+                <a href="{{username}}/product/fertilizers">SHOP NOW</a>
+              </div>
+            </div>
+          </div>
+           </section>
+
+
+           <section id="collection" class="section collection">
+            <div class="collection__container" data-aos="fade-up" data-aos-duration="1200">
+              <div class="collection__box">
+                <div class="img__container">
+                  <lottie-player class="collection_01" src="https://assets5.lottiefiles.com/packages/lf20_na186we7.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+                </div>
+                <div class="collection__content">
+                  <div class="collection__data">
+                    <span>Enhance the quality !!!</span>
+                    <h1>MANURES</h1>
+                    <a href="{{username}}/product/manures">SHOP NOW</a>
+                  </div>
+                </div>
+              </div>
+              <div class="collection__box">
+                <div class="img__container">
+                  <lottie-player class="collection_01" src="https://assets9.lottiefiles.com/packages/lf20_q5lxdkxu.json" background="transparent" speed="1" style="width:250px;height:250px;" autoplay loop></lottie-player>
+                </div>
+                <div class="collection__content">
+                  <div class="collection__data">
+                    <span>Let the plant alone grow !!!</span>
+                    <h1>PESTICIDES</h1>
+                    <a href="{{username}}/product/pesticides">SHOP NOW</a>
+                  </div>
+                </div>
+              </div>
+               </section>
+    {%else%}
+        <section class="section latest__products" id="latest">
+      <div class="title__container">
+        <div class="section__title active" data-id="Latest Products">
+          <span class="dot"></span>
+          <h1 class="primary__title">Exclusively for Farmers</h1>
+        </div>
+      </div>   
+      <section id="collection" class="section collection">
+        <div class="collection__container" data-aos="fade-up" data-aos-duration="1200">
+          <div class="collection__box">
+            <div class="img__container">
+            <script
+                    src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                    <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_ta6fw8qq.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+            </div>
+            <div class="collection__content">
+              <div class="collection__data">
+                <span>Start super fresh !!!</span>
+                <h1>SEEDS</h1>
+                <a href="/product/seeds">SHOP NOW</a>
+              </div>
+            </div>
+          </div>
+          <div class="collection__box">
+            <div class="img__container">
+              <lottie-player class="collection_02" src="https://assets9.lottiefiles.com/private_files/lf30_uMKwX0.json"  background="transparent"  speed="0.25"  style="width: 250px; height: 250px;"  loop  autoplay></lottie-player>
+            </div>
+            <div class="collection__content">
+              <div class="collection__data">
+                <span>Enhance the quality !!!</span>
+                <h1>FERTILIZERS</h1>
+                <a href="/product/fertilizers">SHOP NOW</a>
+              </div>
+            </div>
+          </div>
+           </section>
+
+
+           <section id="collection" class="section collection">
+            <div class="collection__container" data-aos="fade-up" data-aos-duration="1200">
+              <div class="collection__box">
+                <div class="img__container">
+                  <lottie-player class="collection_01" src="https://assets5.lottiefiles.com/packages/lf20_na186we7.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+                </div>
+                <div class="collection__content">
+                  <div class="collection__data">
+                    <span>Enhance the quality !!!</span>
+                    <h1>MANURES</h1>
+                    <a href="/product/manures">SHOP NOW</a>
+                  </div>
+                </div>
+              </div>
+              <div class="collection__box">
+                <div class="img__container">
+                  <lottie-player class="collection_01" src="https://assets9.lottiefiles.com/packages/lf20_q5lxdkxu.json" background="transparent" speed="1" style="width:250px;height:250px;" autoplay loop></lottie-player>
+                </div>
+                <div class="collection__content">
+                  <div class="collection__data">
+                    <span>Let the plant alone grow !!!</span>
+                    <h1>PESTICIDES</h1>
+                    <a href="/product/pesticides">SHOP NOW</a>
+                  </div>
+                </div>
+              </div>
+               </section>
+               {%endif%}
+
+               <section id="collection" class="section collection">
+                <div class="collection__container" data-aos="fade-up" data-aos-duration="1200">
+                  <div class="collection__box">
+                    <div class="img__container">
+                      <img class="collection_01" src="{% static 'home/images/emblem.png' %}" style="width:110px;height:200px" alt="">
+                    </div>
+                    <div class="collection__content">
+                      <div class="collection__data">
+                        <span>Know your rights !!!</span>
+                        <h1>GOVT. SCHEMES</h1>
+                        <a href="#shop">APPLY NOW</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="collection__box">
+                    <div class="img__container">
+                    <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_r0L0OT.json"  background="transparent"  speed="0.45"  style="width: 350px; height: 350px;"  loop  autoplay></lottie-player>
+                    </div>
+                    <div class="collection__content">
+                      <div class="collection__data">
+                        <span>Get help when needed !!!</span>
+                        <h1>LOAN OPTIONS</h1>
+                        <a href="#">APPLY NOW</a>
+                      </div>
+                    </div>
+                  </div>
+                   </section>
+                </section>
+
+
+       <!-- Latest Products -->
+      <section class="section latest__products" id="latest">
+        <div class="title__container">
+          <div class="section__title active" data-id="Latest Products">
+            <span class="dot"></span>
+            <h1 class="primary__title">Latest Products</h1>
+          </div>
+        </div>
+        <div class="container" data-aos="fade-up" data-aos-duration="1200">
+          <div class="glide" id="glide_2">
+            <div class="glide__track" data-glide-el="track">
+              <ul class="glide__slides latest-center">
+                <li class="glide__slide">
+                  <div class="product">
+                    <div class="product__header">
+                      <img src="{% static 'home/images/products/iPhone/seeds_ref_1.jpg' %}" alt="product">
+                    </div>
+                    <div class="product__footer">
+                      <h3>Card Seeds.Co - Tomato</h3>
+                      <div class="rating">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="product__price">
+                        <h4>₹ 750</h4>
+                      </div>
+                      <a href="cart.html"><button type="submit" class="product__btn">Add To Cart</button></a>
+                    </div>
+                    <ul>
+                      <li>
+                        <a data-tip="Quick View" data-place="left" href="product.html">
+                          <i class="fa fa-eye" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a data-tip="Add To Wishlist" data-place="left" href="#">
+                          <i class="fa fa-heart" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a data-tip="Add To Compare" data-place="left" href="#">
+                          <i class='fas fa-check-double'></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="glide__slide">
+                  <div class="product">
+                    <div class="product__header">
+                      <img src="{% static 'home/images/products/sumsung/fert_ref_1.jpg' %}" alt="product">
+                    </div>
+                    <div class="product__footer">
+                      <h3>Plant it Earth - Fertilizer</h3>
+                      <div class="rating">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="product__price">
+                        <h4>₹ 900</h4>
+                      </div>
+                      <a href="cart.html"><button type="submit" class="product__btn">Add To Cart</button></a>
+                    </div>
+                    <ul>
+                      <li>
+                        <a data-tip="Quick View" data-place="left" href="#">
+                          <i class="fa fa-eye" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a data-tip="Add To Wishlist" data-place="left" href="#">
+                          <i class="fa fa-heart" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a data-tip="Add To Compare" data-place="left" href="#">
+                          <i class='fas fa-check-double'></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="glide__slide">
+                  <div class="product">
+                    <div class="product__header">
+                      <img src="{% static 'home/images/products/headphone/man_ref_1.jpg' %}" alt="product">
+                    </div>
+                    <div class="product__footer">
+                      <h3>Phacelia -Green Manure Seeds</h3>
+                      <div class="rating">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="product__price">
+                        <h4>₹ 600</h4>
+                      </div>
+                      <a href="cart.html"><button type="submit" class="product__btn">Add To Cart</button></a>
+                    </div>
+                    <ul>
+                      <li>
+                        <a data-tip="Quick View" data-place="left" href="#">
+                          <i class="fa fa-eye" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a data-tip="Add To Wishlist" data-place="left" href="#">
+                          <i class="fa fa-heart" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a data-tip="Add To Compare" data-place="left" href="#">
+                          <i class='fas fa-check-double'></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="glide__slide">
+                  <div class="product">
+                    <div class="product__header">
+                      <img src="{% static 'home/images/products/sumsung/pest_ref_1.jpg' %}" alt="product">
+                    </div>
+                    <div class="product__footer">
+                      <h3>Premise - Insecticide</h3>
+                      <div class="rating">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="product__price">
+                        <h4>₹ 850</h4>
+                      </div>
+                      <a href="cart.html"><button type="submit" class="product__btn">Add To Cart</button></a>
+                    </div>
+                    <ul>
+                      <li>
+                        <a data-tip="Quick View" data-place="left" href="#">
+                          <i class="fa fa-eye" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a data-tip="Add To Wishlist" data-place="left" href="#">
+                          <i class="fa fa-heart" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a data-tip="Add To Compare" data-place="left" href="#">
+                          <i class='fas fa-check-double'></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="glide__slide">
+                  <div class="product">
+                    <div class="product__header">
+                      <img src="{% static 'home/images/products/iPhone/seeds_ref_2.jpg' %}" alt="product">
+                    </div>
+                    <div class="product__footer">
+                      <h3>W. Atlee Burpee & C0</h3>
+                      <div class="rating">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="product__price">
+                        <h4>₹ 450</h4>
+                      </div>
+                      <a href="cart.html"><button type="submit" class="product__btn">Add To Cart</button></a>
+                    </div>
+                    <ul>
+                      <li>
+                        <a data-tip="Quick View" data-place="left" href="#">
+                          <i class="fa fa-eye" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a data-tip="Add To Wishlist" data-place="left" href="#">
+                          <i class="fa fa-heart" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a data-tip="Add To Compare" data-place="left" href="#">
+                          <i class='fas fa-check-double'></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="glide__slide">
+                  <div class="product">
+                    <div class="product__header">
+                      <img src="{% static 'home/images/products/sumsung/fert_ref_3.jpg' %}" alt="product">
+                    </div>
+                    <div class="product__footer">
+                      <h3>Plant it Earth</h3>
+                     <div class="rating">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="product__price">
+                        <h4>₹ 300</h4>
+                      </div>
+                      <a href="cart.html"><button type="submit" class="product__btn">Add To Cart</button></a>
+                    </div>
+                    <ul>
+                      <li>
+                        <a data-tip="Quick View" data-place="left" href="#">
+                          <i class="fa fa-eye" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a data-tip="Add To Wishlist" data-place="left" href="#">
+                          <i class="fa fa-heart" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a data-tip="Add To Compare" data-place="left" href="#">
+                          <i class='fas fa-check-double'></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="glide__slide">
+                  <div class="product">
+                    <div class="product__header">
+                      <img src="{% static 'home/images/products/iPhone/seeds_ref_3.jpg' %}" alt="product">
+                    </div>
+                    <div class="product__footer">
+                      <h3>Card Seeds Co- Pumpkin</h3>
+                      <div class="rating">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="product__price">
+                        <h4>₹ 300</h4>
+                      </div>
+                      <a href="cart.html"><button type="submit" class="product__btn">Add To Cart</button></a>
+                    </div>
+                    <ul>
+                      <li>
+                        <a data-tip="Quick View" data-place="left" href="#">
+                          <i class="fa fa-eye" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a data-tip="Add To Wishlist" data-place="left" href="#">
+                          <i class="fa fa-heart" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a data-tip="Add To Compare" data-place="left" href="#">
+                          <i class='fas fa-check-double'></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="glide__slide">
+                  <div class="product">
+                    <div class="product__header">
+                      <img src="{% static 'home/images/products/headphone/man_ref_2.jpg' %}" alt="product">
+                    </div>
+                    <div class="product__footer">
+                      <h3>Hasin Organics- Manure</h3>
+                     <div class="rating">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="product__price">
+                        <h4>₹ 250</h4>
+                      </div>
+                      <a href="cart.html"><button type="submit" class="product__btn">Add To Cart</button></a>
+                    </div>
+                    <ul>
+                      <li>
+                        <a data-tip="Quick View" data-place="left" href="#">
+                          <i class="fa fa-eye" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a data-tip="Add To Wishlist" data-place="left" href="#">
+                          <i class="fa fa-heart" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a data-tip="Add To Compare" data-place="left" href="#">
+                          <i class='fas fa-check-double'></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="glide__slide">
+                  <div class="product">
+                    <div class="product__header">
+                      <img src="{% static 'home/images/products/sumsung/pest_ref_2.jpg' %}" alt="product">
+                    </div>
+                    <div class="product__footer">
+                      <h3>Killon</h3>
+                      <div class="rating">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="product__price">
+                        <h4>₹ 450</h4>
+                      </div>
+                      <a href="cart.html"><button type="submit" class="product__btn">Add To Cart</button></a>
+                    </div>
+                    <ul>
+                      <li>
+                        <a data-tip="Quick View" data-place="left" href="#">
+                          <i class="fa fa-eye" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a data-tip="Add To Wishlist" data-place="left" href="#">
+                          <i class="fa fa-heart" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a data-tip="Add To Compare" data-place="left" href="#">
+                          <i class='fas fa-check-double'></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+              </ul>
+          </div>
+
+            <div class="glide__arrows" data-glide-el="controls">
+              <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+              </button>
+              <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+<!--category-->
+      <section class="category__section section" id="category">
+        <div class="tab__list">
+          <div class="title__container tabs">
+            <div class="section__titles category__titles ">
+              <div class="section__title filter-btn active" data-id="All Products">
+                <span class="dot"></span>
+                <h1 class="primary__title">All Products</h1>
+              </div>
+            </div>
+            <div class="section__titles">
+              <div class="section__title filter-btn" data-id="Trending Products">
+                <span class="dot"></span>
+                <h1 class="primary__title">Trending Products</h1>
+              </div>
+            </div>
+
+            <div class="section__titles">
+              <div class="section__title filter-btn" data-id="Special Products">
+                <span class="dot"></span>
+                <h1 class="primary__title">Special Products</h1>
+              </div>
+            </div>
+
+            <div class="section__titles">
+              <div class="section__title filter-btn" data-id="Featured Products">
+                <span class="dot"></span>
+                <h1 class="primary__title">Featured Products</h1>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        <div class="category__container" data-aos="fade-up" data-aos-duration="1200">
+          <div class="category__center"></div>
+        </div>
+         <div class="category__center"> 
+                    <div class="product category__products">
+                      <div class="product__header">
+                        <img src="{% static 'home/images/PRODUCTS_PICTURES/PIC_6.jpg' %}" alt="product">
+                      </div>
+                      <div class="product__footer">
+                        <h3>D. Landreth Seed- Muskmelon</h3>
+
+                        <div class="rating">
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star-o" aria-hidden="true"></i>
+                        </div>
+                         <div class="product__price">
+                           <h4>Rs 760</h4>
+                         </div>
+                        
+                        <a href="cart.html"><button type="submit" class="product__btn">Add To Cart</button></a>
+                      </div>
+                      <ul>
+                        <li>
+                          <a data-tip="Quick View" data-place="left" href="product.html">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Wishlist" data-place="left" href="#">
+                            <i class="fa fa-heart" aria-hidden="true"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Compare" data-place="left" href="#">
+                            <i class='fas fa-check-double'></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                     
+                    <div class="product category__products">
+                      <div class="product__header">
+                        <img src="{% static 'home/images/PRODUCTS_PICTURES/PIC_2.jpg' %}" alt="product">
+                      </div>
+                      <div class="product__footer">
+                        <h3>Rathbone Sard & C0</h3>
+                        <div class="rating">
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star-o" aria-hidden="true"></i>
+                        </div>
+                        
+                        <div class="product__price">
+                          <h4>₹ 265</h4>
+                        </div>
+                        
+                        <a href="cart.html"><button type="submit" class="product__btn">Add To Cart</button></a>
+                      </div>
+                      <ul>
+                        <li>
+                          <a data-tip="Quick View" data-place="left" href="product.html">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Wishlist" data-place="left" href="#">
+                            <i class="fa fa-heart" aria-hidden="true"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Compare" data-place="left" href="#">
+                            <i class='fas fa-check-double'></i>
+                          </a>
+                        </li>
+                      </ul>
+                      </div>
+                    
+                     
+                    <div class="product category__products">
+                      <div class="product__header">
+                        <img src="{% static 'home/images/PRODUCTS_PICTURES/PIC_1.jpg' %}" alt="product">
+                      </div>
+                      <div class="product__footer">
+                        <h3>H W Buckbee</h3>
+                        <div class="rating">
+                          
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star-o" aria-hidden="true"></i>
+                        </div>  
+                        <div class="product__price">
+                          <h4>₹ 850</h4>
+                        </div>
+                        <a href="cart.html"><button type="submit" class="product__btn">Add To Cart</button></a>
+                      </div>
+                      <ul>
+                        <li>
+                          <a data-tip="Quick View" data-place="left" href="product.html">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Wishlist" data-place="left" href="#">
+                            <i class="fa fa-heart" aria-hidden="true"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Compare" data-place="left" href="#">
+                            <i class='fas fa-check-double'></i>
+                          </a>
+                        </li>
+                      </ul>
+                      </div>
+                     
+                    <div class="product category__products">
+                      <div class="product__header">
+                        <img src="{% static 'home/images/PRODUCTS_PICTURES/PIC_3.jpg' %}" alt="product">
+                      </div>
+                      <div class="product__footer">
+                        <h3>Cherry Brandy</h3>
+                        <div class="rating">
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-empty' %}"></use>
+                          </svg>
+                        </div>
+                        <div class="product__price">
+                          <h4>₹ 290</h4>
+                        </div>
+                        <a href="http://127.0.0.1:5501/index.html#"><button type="submit" class="product__btn">Add To Cart</button></a>
+                      </div>
+                    <ul>
+                        <li>
+                          <a data-tip="Quick View" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-eye' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Wishlist" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-heart-o' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Compare" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-loop2' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                    </ul>
+                    </div>
+                     
+                    <div class="product category__products">
+                      <div class="product__header">
+                        <img src="{% static 'home/images/PRODUCTS_PICTURES/PIC_4.jpg' %}" alt="product">
+                      </div>
+                      <div class="product__footer">
+                        <h3>Maules's Seed</h3>
+                        <div class="rating">
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full'%}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-empty' %}"></use>
+                          </svg>
+                        </div>
+                        <div class="product__price">
+                          <h4>₹ 250</h4>
+                        </div>
+                        <a href="http://127.0.0.1:5501/index.html#"><button type="submit" class="product__btn">Add To Cart</button></a>
+                      </div>
+                    <ul>
+                        <li>
+                          <a data-tip="Quick View" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-eye' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Wishlist" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-heart-o' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Compare" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-loop2' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                    </ul>
+                    </div>
+                     
+                    <div class="product category__products">
+                      <div class="product__header">
+                        <img src="{% static 'home/images/PRODUCTS_PICTURES/PIC_5.jpg' %}" alt="product">
+                      </div>
+                      <div class="product__footer">
+                        <h3>Everitt's Seeds</h3>
+                        <div class="rating">
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-empty' %}"></use>
+                          </svg>
+                        </div>
+                        <div class="product__price">
+                          <h4>₹ 365</h4>
+                        </div>
+                        <a href="http://127.0.0.1:5501/index.html#"><button type="submit" class="product__btn">Add To Cart</button></a>
+                      </div>
+                    <ul>
+                        <li>
+                          <a data-tip="Quick View" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-eye' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Wishlist" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-heart-o' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Compare" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-loop2' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                    </ul>
+                    </div>
+                     
+                    <div class="product category__products">
+                      <div class="product__header">
+                        <img src="{% static 'home/images/PRODUCTS_PICTURES/PIC_7.jpg' %}" alt="product">
+                      </div>
+                      <div class="product__footer">
+                        <h3>Lovett's Best Blackberry</h3>
+                        <div class="rating">
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-empty' %}"></use>
+                          </svg>
+                        </div>
+                        <div class="product__price">
+                          <h4>₹ 385</h4>
+                        </div>
+                        <a href="http://127.0.0.1:5501/index.html#"><button type="submit" class="product__btn">Add To Cart</button></a>
+                      </div>
+                    <ul>
+                        <li>
+                          <a data-tip="Quick View" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-eye' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Wishlist" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-heart-o' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Compare" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-loop2' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                    </ul>
+                    </div>
+                     
+                    <div class="product category__products">
+                      <div class="product__header">
+                        <img src="{% static 'home/images/PRODUCTS_PICTURES/PIC_8.jpg' %}" alt="product">
+                      </div>
+                      <div class="product__footer">
+                        <h3>Landreth- Peas</h3>
+                        <div class="rating">
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-empty' %}"></use>
+                          </svg>
+                        </div>
+                        <div class="product__price">
+                          <h4>₹ 475</h4>
+                        </div>
+                        <a href="http://127.0.0.1:5501/index.html#"><button type="submit" class="product__btn">Add To Cart</button></a>
+                      </div>
+                    <ul>
+                        <li>
+                          <a data-tip="Quick View" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-eye' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Wishlist" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-heart-o' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Compare" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-loop2' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                    </ul>
+                  </div>
+                     
+                    <div class="product category__products">
+                      <div class="product__header">
+                        <img src="{% static 'home/images/PRODUCTS_PICTURES/PIC_9.jpg' %}" alt="product">
+                      </div>
+                      <div class="product__footer">
+                        <h3>Burpee's- Raddish</h3>
+                        <div class="rating">
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-empty' %}"></use>
+                          </svg>
+                        </div>
+                        <div class="product__price">
+                          <h4>₹ 800</h4>
+                        </div>
+                        <a href="http://127.0.0.1:5501/index.html#"><button type="submit" class="product__btn">Add To Cart</button></a>
+                      </div>
+                    <ul>
+                        <li>
+                          <a data-tip="Quick View" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-eye' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Wishlist" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-heart-o' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Compare" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-loop2' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                    </ul>
+                    </div>
+                       
+                  <div class="product category__products">
+                      <div class="product__header">
+                        <img src="{% static 'home/images/PRODUCTS_PICTURES/PIC_10.jpg' %}" alt="product">
+                      </div>
+                      <div class="product__footer">
+                        <h3>Burts- Tall Nasturtium</h3>
+                        <div class="rating">
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-empty' %}"></use>
+                          </svg>
+                        </div>
+                        <div class="product__price">
+                          <h4>₹ 850</h4>
+                        </div>
+                        <a href="http://127.0.0.1:5501/index.html#"><button type="submit" class="product__btn">Add To Cart</button></a>
+                      </div>
+                    <ul>
+                        <li>
+                          <a data-tip="Quick View" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-eye' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Wishlist" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-heart-o' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Compare" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-loop2' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                    </ul>
+                    </div>
+                     
+                    <div class="product category__products">
+                      <div class="product__header">
+                        <img src="{% static 'home/images/PRODUCTS_PICTURES/PIC_12.jpg' %}" alt="product">
+                      </div>
+                      <div class="product__footer">
+                        <h3>Cedar Grove</h3>
+                        <div class="rating">
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-empty' %}"></use>
+                          </svg>
+                        </div>
+                        <div class="product__price">
+                          <h4>₹ 360</h4>
+                        </div>
+                        <a href="http://127.0.0.1:5501/index.html#"><button type="submit" class="product__btn">Add To Cart</button></a>
+                      </div>
+                    <ul>
+                        <li>
+                          <a data-tip="Quick View" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-eye' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Wishlist" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-heart-o' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Compare" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-loop2' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                    </ul>
+                    </div>
+                     
+                    <div class="product category__products">
+                      <div class="product__header">
+                        <img src="{% static 'home/images/PRODUCTS_PICTURES/PIC_13.jpg' %}" alt="product">
+                      </div>
+                      <div class="product__footer">
+                        <h3>Patience- Seed & Co</h3>
+                        <div class="rating">
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-empty' %}"></use>
+                          </svg>
+                        </div>
+                        <div class="product__price">
+                          <h4>₹ 320</h4>
+                        </div>
+                        <a href="http://127.0.0.1:5501/index.html#"><button type="submit" class="product__btn">Add To Cart</button></a>
+                      </div>
+                    <ul>
+                        <li>
+                          <a data-tip="Quick View" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-eye' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Wishlist" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-heart-o' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Compare" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-loop2' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                    </ul>
+                    </div>
+                     
+                    <div class="product category__products">
+                      <div class="product__header">
+                        <img src="{% static 'home/images/PRODUCTS_PICTURES/PIC_14.jpg' %}" alt="product">
+                      </div>
+                      <div class="product__footer">
+                        <h3>Sidhamo Goji</h3>
+                        <div class="rating">
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-empty' %}"></use>
+                          </svg>
+                        </div>
+                        <div class="product__price">
+                          <h4>₹ 305</h4>
+                        </div>
+                        <a href="http://127.0.0.1:5501/index.html#"><button type="submit" class="product__btn">Add To Cart</button></a>
+                      </div>
+                    <ul>
+                        <li>
+                          <a data-tip="Quick View" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-eye' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Wishlist" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-heart-o' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Compare" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-loop2' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                    </ul>
+                    </div>
+                     
+                    <div class="product category__products">
+                      <div class="product__header">
+                        <img src="{% static 'home/images/PRODUCTS_PICTURES/PIC_14.jpg' %}" alt="product">
+                      </div>
+                      <div class="product__footer">
+                        <h3>Sidhomo Goji </h3>
+                        <div class="rating">
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-empty' %}"></use>
+                          </svg>
+                        </div>
+                        <div class="product__price">
+                          <h4>₹ 400</h4>
+                        </div>
+                        <a href="http://127.0.0.1:5501/index.html#"><button type="submit" class="product__btn">Add To Cart</button></a>
+                      </div>
+                    <ul>
+                        <li>
+                          <a data-tip="Quick View" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-eye' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Wishlist" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-heart-o' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Compare" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-loop2' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                    </ul>
+                    </div>
+                     
+                    <div class="product category__products">
+                      <div class="product__header">
+                        <img src="{% static 'home/images/PRODUCTS_PICTURES/PIC_15.jpg' %}" alt="product">
+                      </div>
+                      <div class="product__footer">
+                        <h3>Organic Fertilizer</h3>
+                        <div class="rating">
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-empty' %}"></use>
+                          </svg>
+                        </div>
+                        <div class="product__price">
+                          <h4>₹ 550</h4>
+                        </div>
+                        <a href="http://127.0.0.1:5501/index.html#"><button type="submit" class="product__btn">Add To Cart</button></a>
+                      </div>
+                    <ul>
+                        <li>
+                          <a data-tip="Quick View" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-eye' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Wishlist" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href=" {% static 'home/images/sprite.svg#icon-heart-o' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Compare" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-loop2' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                    </ul>
+                    </div>
+                     
+                    <div class="product category__products">
+                      <div class="product__header">
+                        <img src="{% static 'home/images/PRODUCTS_PICTURES/PIC_16.jpg' %}" alt="product">
+                      </div>
+                      <div class="product__footer">
+                        <h3>Nera</h3>
+                        <div class="rating">
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-empty' %}"></use>
+                          </svg>
+                        </div>
+                        <div class="product__price">
+                          <h4>₹ 300</h4>
+                        </div>
+                        <a href="http://127.0.0.1:5501/index.html#"><button type="submit" class="product__btn">Add To Cart</button></a>
+                      </div>
+                    <ul>
+                        <li>
+                          <a data-tip="Quick View" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-eye' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Wishlist" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-heart-o' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Compare" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-loop2' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                    </ul>
+                    </div>
+                     
+                    <div class="product category__products">
+                      <div class="product__header">
+                        <img src="{% static 'home/images/PRODUCTS_PICTURES/PIC_17.jpg' %}" alt="product">
+                      </div>
+                      <div class="product__footer">
+                        <h3>Garden Tuma</h3>
+                        <div class="rating">
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-empty' %}"></use>
+                          </svg>
+                        </div>
+                        <div class="product__price">
+                          <h4>₹ 630</h4>
+                        </div>
+                        <a href="http://127.0.0.1:5501/index.html#"><button type="submit" class="product__btn">Add To Cart</button></a>
+                      </div>
+                    <ul>
+                        <li>
+                          <a data-tip="Quick View" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-eye' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Wishlist" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-heart-o' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Compare" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-loop2' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                    </ul>
+                    </div>
+                     
+                    <div class="product category__products">
+                      <div class="product__header">
+                        <img src="{% static 'home/images/PRODUCTS_PICTURES/PIC_18.jpg' %}" alt="product">
+                      </div>
+                      <div class="product__footer">
+                        <h3>Essential Grove</h3>
+                        <div class="rating">
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-empty' %}"></use>
+                          </svg>
+                        </div>
+                        <div class="product__price">
+                          <h4>₹ 270</h4>
+                        </div>
+                        <a href="http://127.0.0.1:5501/index.html#"><button type="submit" class="product__btn">Add To Cart</button></a>
+                      </div>
+                    <ul>
+                        <li>
+                          <a data-tip="Quick View" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-eye' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Wishlist" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-heart-o' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Compare" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-loop2' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                    </ul>
+                    </div>
+                     
+                    <div class="product category__products">
+                      <div class="product__header">
+                        <img src="{% static 'home/images/PRODUCTS_PICTURES/PIC_19.jpg' %}" alt="product">
+                      </div>
+                      <div class="product__footer">
+                        <h3>HuminRich</h3>
+                        <div class="rating">
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-empty' %}"></use>
+                          </svg>
+                        </div>
+                        <div class="product__price">
+                          <h4>₹ 250</h4>
+                        </div>
+                        <a href="http://127.0.0.1:5501/index.html#"><button type="submit" class="product__btn">Add To Cart</button></a>
+                      </div>
+                    <ul>
+                        <li>
+                          <a data-tip="Quick View" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-eye' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Wishlist" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-heart-o' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Compare" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-loop2' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                    </ul>
+                    </div>
+                     
+                    <div class="product category__products">
+                      <div class="product__header">
+                        <img src="{% static 'home/images/PRODUCTS_PICTURES/PIC_20.jpg' %}" alt="product">
+                      </div>
+                      <div class="product__footer">
+                        <h3>Blue Sea's</h3>
+                        <div class="rating">
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-empty' %}"></use>
+                          </svg>
+                        </div>
+                        <div class="product__price">
+                          <h4>₹ 265</h4>
+                        </div>
+                        <a href="http://127.0.0.1:5501/index.html#"><button type="submit" class="product__btn">Add To Cart</button></a>
+                      </div>
+                    <ul>
+                        <li>
+                          <a data-tip="Quick View" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-eye' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Wishlist" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-heart-o' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Compare" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-loop2' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                    </ul>
+                    </div>
+                     
+                    <div class="product category__products">
+                      <div class="product__header">
+                        <img src="{% static 'home/images/PRODUCTS_PICTURES/PIC_21.jpg' %}" alt="product">
+                      </div>
+                      <div class="product__footer">
+                        <h3>Scotts</h3>
+                        <div class="rating">
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-empty' %}"></use>
+                          </svg>
+                        </div>
+                        <div class="product__price">
+                          <h4>₹ 500</h4>
+                        </div>
+                        <a href="http://127.0.0.1:5501/index.html#"><button type="submit" class="product__btn">Add To Cart</button></a>
+                      </div>
+                    <ul>
+                        <li>
+                          <a data-tip="Quick View" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-eye' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Wishlist" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-heart-o' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Compare" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href=".{% static 'home/images/sprite.svg#icon-loop2' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                    </ul>
+                    </div>
+                     
+                    <div class="product category__products">
+                      <div class="product__header">
+                        <img src="{% static 'home/images/PRODUCTS_PICTURES/PIC_23.jpg' %}" alt="product">
+                      </div>
+                      <div class="product__footer">
+                        <h3>Moringa</h3>
+                        <div class="rating">
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-empty' %}"></use>
+                          </svg>
+                        </div>
+                        <div class="product__price">
+                          <h4>₹ 700</h4>
+                        </div>
+                        <a href="http://127.0.0.1:5501/index.html#"><button type="submit" class="product__btn">Add To Cart</button></a>
+                      </div>
+                    <ul>
+                        <li>
+                          <a data-tip="Quick View" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-eye' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Wishlist" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-heart-o' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Compare" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-loop2' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                    </ul>
+                    </div>
+                     
+                    <div class="product category__products">
+                      <div class="product__header">
+                        <img src="{% static 'home/images/PRODUCTS_PICTURES/PIC_24.jpg' %}" alt="product">
+                      </div>
+                      <div class="product__footer">
+                        <h3>Kathon</h3>
+                        <div class="rating">
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-empty' %}"></use>
+                          </svg>
+                        </div>
+                        <div class="product__price">
+                          <h4>₹ 450</h4>
+                        </div>
+                        <a href="http://127.0.0.1:5501/index.html#"><button type="submit" class="product__btn">Add To Cart</button></a>
+                      </div>
+                    <ul>
+                        <li>
+                          <a data-tip="Quick View" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-eye' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Wishlist" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-heart-o' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Compare" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-loop2' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                    </ul>
+                    </div>
+                     
+                    <div class="product category__products">
+                      <div class="product__header">
+                        <img src="{% static 'home/images/PRODUCTS_PICTURES/PIC_25.jpg' %}" alt="product">
+                      </div>
+                      <div class="product__footer">
+                        <h3>Go Green</h3>
+                        <div class="rating">
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-empty' %}"></use>
+                          </svg>
+                        </div>
+                        <div class="product__price">
+                          <h4>₹ 460</h4>
+                        </div>
+                        <a href="http://127.0.0.1:5501/index.html#"><button type="submit" class="product__btn">Add To Cart</button></a>
+                      </div>
+                    <ul>
+                        <li>
+                          <a data-tip="Quick View" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-eye' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Wishlist" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-heart-o' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Compare" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-loop2' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                    </ul>
+                    </div>
+                     
+                    <div class="product category__products">
+                      <div class="product__header">
+                        <img src="{% static 'home/images/PRODUCTS_PICTURES/PIC_26.jpg' %}" alt="product">
+                      </div>
+                      <div class="product__footer">
+                        <h3>Flourish Tabs</h3>
+                        <div class="rating">
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-full' %}"></use>
+                          </svg>
+                          <svg>
+                            <use xlink:href="{% static 'home/images/sprite.svg#icon-star-empty' %}"></use>
+                          </svg>
+                        </div>
+                        <div class="product__price">
+                          <h4>₹ 600</h4>
+                        </div>
+                        <a href="http://127.0.0.1:5501/index.html#"><button type="submit" class="product__btn">Add To Cart</button></a>
+                      </div>
+                    <ul>
+                        <li>
+                          <a data-tip="Quick View" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-eye'"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Wishlist" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-heart-o' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                          <a data-tip="Add To Compare" data-place="left" href="http://127.0.0.1:5501/index.html#">
+                            <svg>
+                              <use xlink:href="{% static 'home/images/sprite.svg#icon-loop2' %}"></use>
+                            </svg>
+                          </a>
+                        </li>
+                    </ul>
+                    </div>
+                    </div>
+        </div>
+    
+    </section>
+    </div>
+    </section>
+
+    <!-- Facility Section -->
+    <section class="facility__section section" id="facility">
+      <div class="container">
+        <div class="facility__contianer" data-aos="fade-up" data-aos-duration="1200">
+          <div class="facility__box">
+            <div class="facility-img__container">
+              <i class='fas fa-plane-departure' style='font-size:36px'></i>
+            </div>
+            <p>FREE SHIPPING WORLD WIDE</p>
+          </div>
+
+          <div class="facility__box">
+            <div class="facility-img__container">
+             <i class="fa fa-credit-card-alt" style="font-size:36px"></i>
+            </div>
+            <p>100% MONEY BACK GUARANTEE</p>
+          </div>
+
+          <div class="facility__box">
+            <div class="facility-img__container">
+              <i class="fa fa-money" style="font-size:36px"></i>
+            </div>
+            <p>MANY PAYMENT GATWAYS</p>
+          </div>
+
+          <div class="facility__box">
+            <div class="facility-img__container">
+              <i class="fa fa-clock-o" style="font-size:36px" aria-hidden="true"></i>
+            </div>
+            <p>24/7 ONLINE SUPPORT</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <!--New Section  -->
+    <section class="section news" id="news">
+      <div class="container">
+        <div class="title__container">
+          <div class="section__titles">
+            <div class="section__title active">
+              <span class="dot"></span>
+              <h1 class="primary__title">Agri Feed</h1>
+            </div>
+          </div>
+        </div>
+        <div class="news__container">
+          <div class="glide" id="glide_5">
+            <div class="glide__track" data-glide-el="track">
+              <ul class="glide__slides">
+                <li class="glide__slide">
+                  <div class="new__card">
+                    <div class="card__header">
+                      <img src="{% static 'home/images/news2.png' %}" alt="">
+                    </div>
+                    <div class="card__footer">
+                      <h3>The prices of dairy products are hiking !</h3>
+                      <span>By Admin</span>
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo praesentium, numquam non
+                        provident rem sed minus natus unde vel modi!</p>
+                      <a href="agrifeed_info.html"><button>Read More</button></a>
+                    </div>
+                  </div>
+                </li>
+                <li class="glide__slide">
+                  <div class="new__card">
+                    <div class="card__header">
+                      <img src="{% static 'home/images/news1.png' %}" alt="">
+                    </div>
+                    <div class="card__footer">
+                      <h3>Scarcity of wheat due to the climate crisis.</h3>
+                      <span>By Admin</span>
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo praesentium, numquam non
+                        provident rem sed minus natus unde vel modi!</p>
+                      <a href="agrifeed_info.html"><button>Read More</button></a>
+                    </div>
+                  </div>
+                </li>
+                <li class="glide__slide">
+                  <div class="new__card">
+                    <div class="card__header">
+                      <img src="{% static 'home/images/news4.png' %}" alt="">
+                    </div>
+                    <div class="card__footer">
+                      <h3>Grapes to seen a boon in price this summer.</h3>
+                      <span>By Admin</span>
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo praesentium, numquam non
+                        provident rem sed minus natus unde vel modi!</p>
+                      <a href="agrifeed_info.html"><button>Read More</button></a>
+                    </div>
+                  </div>
+                </li>
+                <li class="glide__slide">
+                  <div class="new__card">
+                    <div class="card__header">
+                      <img src="{% static 'home/images/news3.png' %}" alt="">
+                    </div>
+                    <div class="card__footer">
+                      <h3>Do tuskers bring loss to plantain owners? </h3>
+                      <span>By Admin</span>
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo praesentium, numquam non
+                        provident rem sed minus natus unde vel modi!</p>
+                      <a href="agrifeed_info.html"><button>Read More</button></a>
+                    </div>
+                  </div>
+                </li>
+                <li class="glide__slide">
+                  <div class="new__card">
+                    <div class="card__header">
+                      <img src="{% static 'home/images/news5.png' %}" alt="">
+                    </div>
+                    <div class="card__footer">
+                      <h3>Nilgiris witness "Kurunji" flowers after 12 years !</h3>
+                      <span>By Admin</span>
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo praesentium, numquam non
+                        provident rem sed minus natus unde vel modi!</p>
+                      <a href="agrifeed_info.html"><button>Read More</button></a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!--livestock feed-->
+    <section class="section news" id="news">
+      <div class="container">
+        <div class="title__container">
+          <div class="section__titles">
+            <div class="section__title active">
+              <span class="dot"></span>
+              <h1 class="primary__title"><a href="saved resources.html">Livestock Feed</a></h1>
+            </div>
+          </div>
+        </div>
+
+     <!-- Founder's Section -->
+     <section class="section latest__products" id="latest">
+      <div class="title__container">
+        <div class="section__title active" data-id="Latest Products">
+          <span class="dot"></span>
+          <h1 class="primary__title">Founder's Corner</h1>
+        </div>
+      </div> 
+
+    <section class="section testimonial" id="testimonial">
+      <div class="testimonial__container">
+        <div class="glide" id="glide_4">
+          <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+              <li class="glide__slide">
+                <div class="testimonial__box">
+                  <div class="client__image">
+                    <img src="{% static 'home/images/profile3.jpg' %}" alt="profile">
+                  </div>
+                  <p></p>
+                  <div class="client__info">
+                    <h3>Dhanushkumar S G</h3>
+                    <span>Founder at FarmersFirst</span>
+                  </div>
+                </div>
+              </li>
+              <li class="glide__slide">
+                <div class="testimonial__box">
+                  <div class="client__image">
+                    <img src="{% static 'home/images/profile4.png' %}" alt="profile">
+                  </div>
+                  <p></p>
+                  <div class="client__info">
+                    <h3>Giftlin Devapriya</h3>
+                    <span>Founder at FarmersFirst</span>
+                  </div>
+                </div>
+              </li>
+              <li class="glide__slide">
+                <div class="testimonial__box">
+                  <div class="client__image">
+                    <img src="{% static 'home/images/profile5.jpg' %}" alt="profile">
+                  </div>
+                  <p></p>
+                  <div class="client__info">
+                    <h3>Mirudhula Bharath</h3>
+                    <span>Founder at FarmersFirst</span>
+                  </div>
+                </div>
+              </li>
+
+              <li class="glide__slide">
+                <div class="testimonial__box">
+                  <div class="client__image">
+                    <img src="{% static 'home/images/profile1.2.jpg' %}" alt="profile">
+                  </div>
+                  <p></p>
+                  <div class="client__info">
+                    <h3>Monisha Loganathan</h3>
+                    <span>Founder at FarmersFirst</span>
+                  </div>
+                </div>
+              </li>
+
+              <li class="glide__slide">
+                <div class="testimonial__box">
+                  <div class="client__image">
+                    <img src="{% static 'home/images/profile2.png' %}" alt="profile">
+                  </div>
+                  <p></p>
+                  <div class="client__info">
+                    <h3>Sanjaikabilan Sivakumar</h3>
+                    <span>Founder at FarmersFirst</span>
+                  </div>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+
+          <div class="glide__bullets" data-glide-el="controls[nav]">
+            <button class="glide__bullet" data-glide-dir="=0"></button>
+            <button class="glide__bullet" data-glide-dir="=1"></button>
+            <button class="glide__bullet" data-glide-dir="=2"></button>
+            <button class="glide__bullet" data-glide-dir="=3"></button>
+            <button class="glide__bullet" data-glide-dir="=4"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+    </section>
+
+    <!-- NewsLetter -->
+    <section class="section newsletter" id="contact">
+      <div class="container">
+        <div class="newsletter__content">
+          <div class="newsletter__data">
+            <h3>SUBSCRIBE TO OUR NEWSLETTER</h3>
+            <p>A short sentence describing what someone will receive by subscribing</p>
+          </div>
+          <form action="#">
+            <input type="email" placeholder="Enter your email address" class="newsletter__email">
+            <a class="newsletter__link" href="#">subscribe</a>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- End Main -->
+
+  <!-- Footer -->
+  <footer id="footer" class="section footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer-top__box">
+          <h3>FOR ADDITIONAL SUPPORT!</h3>
+         <a class="reacher" href="Contact/contact.html"> Reach us Anytime!!</a>
+           <a href="https://farmersfirst.tribeplatform.com/community-fourm-ibppqdak/post">Community Fourm</a>
+        </div>
+        <div class="footer-top__box">
+          <h3>INFORMATION</h3>
+          <a href="#">About Us</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Contact Us</a>
+          <a href="#">Site Map</a>
+        </div>
+        <div class="footer-top__box">
+          <h3>MY ACCOUNT</h3>
+          <a href="#">My Account</a>
+          <a href="#">Order History</a>
+          <a href="#">Wish List</a>
+          <a href="#">Newsletter</a>
+          <a href="#">Returns</a>
+        </div>
+        <div class="footer-top__box">
+          <h3>CONTACT US</h3>
+          <div>
+            <span>
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+            </span>
+            KUMARAGURU COLLEGE OF TECHNOLOGY, TAMILNADU ,INDIA.
+          </div>
+          <div>
+            <span>
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+            </span>
+            Agrisales@outlook.com
+          </div>
+          <div>
+            <span>
+              <i class='fas fa-phone-alt'></i>
+            </span>
+            00000001
+          </div>
+          <div>
+            <span>
+              <i class="fa fa-paper-plane-o"></i>
+            </span>
+            KUMARAGURU COLLEGE OF TECHNOLOGY, COIMBATORE.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer-bottom__box">
+
+      </div>
+      <div class="footer-bottom__box">
+
+      </div>
+    </div>
+    </div>
+  </footer>
+  <!-- End Footer -->
+
+  <!-- PopUp -->
+  <div class="popup hide__popup">
+    <div class="popup__content">
+      <div class="popup__close">
+        <i class="fa fa-close"></i>
+      </div>
+      <div class="popup__left">
+        <div class="popup-img__container">
+          <img class="popup__img" src="{% static 'home/images/popup.png' %}" alt="popup">
+        </div>
+      </div>
+      <div class="popup__right">
+        <div class="right__content">
+          <h1>Get Discount <span>30%</span> Off</h1>
+          <p>Sign up to our newsletter and save 30% for you next purchase. No spam, we promise!
+          </p>
+          <form action="#">
+            <input type="email" placeholder="Enter your email..." class="popup__form">
+            <a href="#">Subscribe</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Go To -->
+
+  <a href="#header" class="goto-top scroll-link">
+    <i class="fa fa-arrow-up"style="color:white;" aria-hidden="true"></i>
+  </a>
+
+
+  <!-- Glide Carousel Script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+  <!-- Animate On Scroll -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- Custom JavaScript -->
+  <script src="{% static 'home/js/products.js' %}"></script>
+  <script src="{% static 'home/js/index.js' %}"></script>
+  <script src="{% static 'home/js/slider.js' %}"></script>
+
+</body>
+
+</html>

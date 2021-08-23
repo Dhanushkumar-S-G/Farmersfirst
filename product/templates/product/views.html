@@ -1,0 +1,95 @@
+{%extends "product/layout.html"%}
+{%block product %}
+
+<!-- Main -->
+<main id="main">
+  <div class="container">
+    <br><br>
+
+    <!-- Collection -->
+    <section class="section latest__products" id="latest">
+      <section id="collection" class="section collection" >
+        <div class="collection__container" >
+          <div class="collection__box">
+            <div class="img__container">
+              <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+              <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_ta6fw8qq.json" background="transparent"
+                speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+            </div>
+
+            <div class="collection__content">
+              <div class="collection__data">
+                <span>Start super fresh !!!</span>
+                <h1>SEEDS</h1>
+                {%if username %}
+                <a href="/{{username}}/product/seeds">SHOP NOW</a>
+                {%else%}
+                <a href="/product/seeds">SHOP NOW</a>
+                {%endif%}
+                
+              </div>
+            </div>
+          </div>
+          <div class="collection__box">
+            <div class="img__container">
+              <lottie-player class="collection_02" src="https://assets9.lottiefiles.com/private_files/lf30_uMKwX0.json"
+                background="transparent" speed="0.25" style="width: 250px; height: 250px;" loop autoplay>
+              </lottie-player>
+            </div>
+            <div class="collection__content">
+              <div class="collection__data">
+                <span>Enhance the quality !!!</span>
+                <h1>FERTILIZERS</h1>
+                {%if username %}
+                <a href="/{{username}}/product/fertlizers">SHOP NOW</a>
+                {%else%}
+                <a href="/product/fertlizers">SHOP NOW</a>
+                {%endif%}
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="collection" class="section collection">
+        <div class="collection__container" >
+          <div class="collection__box">
+            <div class="img__container">
+              <lottie-player class="collection_01" src="https://assets5.lottiefiles.com/packages/lf20_na186we7.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+            </div>
+            <div class="collection__content">
+              <div class="collection__data">
+                <span>Enhance the quality !!!</span>
+                <h1>MANURES</h1>
+                {%if username %}
+                <a href="/{{username}}/product/manures">SHOP NOW</a>
+                {%else%}
+                <a href="/product/manures">SHOP NOW</a>
+                {%endif%}
+                
+              </div>
+            </div>
+          </div>
+          <div class="collection__box">
+            <div class="img__container">
+              <lottie-player class="collection_01" src="https://assets9.lottiefiles.com/packages/lf20_q5lxdkxu.json" background="transparent" speed="1" style="width:250px;height:250px;" autoplay loop></lottie-player>
+            </div>
+            <div class="collection__content">
+              <div class="collection__data">
+                <span>Let the plant alone grow !!!</span>
+                <h1>PESTICIDES</h1>
+                {%if username %}
+                <a href="/{{username}}/product/pesticides">SHOP NOW</a>
+                {%else%}
+                <a href="/product/pesticides">SHOP NOW</a>
+                {%endif%}
+                
+              </div>
+            </div>
+          </div>
+           </section>
+    </section>
+    </section>
+  </div>
+</main>
+{%endblock%}

@@ -1,0 +1,214 @@
+{%load static %}
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script
+      src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous">
+    </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap" rel="stylesheet" />
+
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{% static 'home/images/favicon.ico' %}" type="image/x-icon" />
+
+  <!--Gliders Carousel-->
+  <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.core.min.css" />
+  <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.theme.min.css" />
+
+  <!-- Carousel -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.min.css
+">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <!-- Custom StyleSheet -->
+  <link rel="stylesheet" href="{% static 'home/css/styles.css' %}" />
+
+  <title>FarmersFirst-Products</title>
+
+</head>
+
+<body>
+  <header id="header" class="header">
+    <div class="navigation">
+      <div class="container">
+        <nav class="nav">
+          <div class="nav__hamburger">
+            <i class="fa fa-bars" style="color:black" aria-hidden="true"></i>
+          </div>
+  
+          <div class="nav__logo">
+            <a href="/" class="scroll-link"> 
+            <div class="texty">
+              FARMERS FIRST
+            </div>
+            </a>
+          </div>
+  
+          <div class="nav__menu">
+            <div class="menu__top">
+              <span class="nav__category">FARMERS FIRST</span>
+              <a href="#" class="close__toggle">
+                <i class="fa fa-times" style="color:black;"aria-hidden="true"></i>
+              </a>
+            </div>
+            <ul class="nav__list">
+              <li class="nav__item">
+                {%if username%}
+                <a href="/{{username}}" class="nav__link ">Home</a>
+              </li>
+              <li class="nav__item"></li>
+                <a href="/{{username}}/product" class="nav__link ">Category</a>
+              </li>
+              <li class="nav__item">
+                <a href="/{{username}}" class="nav__link scroll-link">Blog</a>
+              </li>
+              <li class="nav__item">
+                <a href="https://farmersfirst.tribeplatform.com/community-fourm-ibppqdak/post" class="nav__link ">Community</a>
+              </li>
+              {%else%}
+                <a href="/" class="nav__link ">Home</a>
+              </li>
+              <li class="nav__item">
+                <a href="/product" class="nav__link ">Category</a>
+              </li>
+              <li class="nav__item">
+                <a href="/" class="nav__link scroll-link">Blog</a>
+              </li>
+              <li class="nav__item">
+                <a href="https://farmersfirst.tribeplatform.com/community-fourm-ibppqdak/post" class="nav__link ">Community</a>
+              </li>
+              {%endif%}
+            </ul>
+          </div>
+  
+          <div class="nav__icons">
+            {% if username%}
+            <a class="icon__item"  style="border:none; background-color: white; " href='/{{username}}/userprofile' >{{username}}</a>
+  
+            <a href="/{{username}}/cart" class="icon__item">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                
+            </a>
+            <a href="/" class="icon__item">
+              <i class="fas fa-sign-out-alt"></i>
+              </a>
+            {%else%}
+            <a href="/login" class="icon__item">
+                <i class="fa fa-user" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="icon__item">
+                        
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </a>
+            {%endif %}
+            
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="container2">
+    <nav class="nav2">
+      {%if username%}
+      <form class="example" action="/{{username}}/product/search" method = "POST"style="margin:auto;max-width:400px">
+        {% csrf_token %}
+        <input type="text" placeholder="Search.." name="search" >
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+      {%else%}
+        <form class="example" action="/product/search " method = "POST"style="margin:auto;max-width:400px">
+          {% csrf_token %}
+          <input type="text" placeholder="Search.." name="search" >
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      {%endif%}
+    </nav>
+    <div id="google_translate_element"></div>
+  
+  <script type="text/javascript">
+  function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+  }
+  </script>
+  
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+     
+  </header>
+    
+  {% block product%}
+  {%endblock%}
+      <footer id="footer" class="section footer">
+        <div class="container">
+          <div class="footer__top">
+            <div class="footer-top__box">
+              <h3>FOR ADDITIONAL SUPPORT!</h3>
+             <a class="reacher" href="Contact/contact.html"> Reach us Anytime!!</a>
+            </div>
+            <div class="footer-top__box">
+              <h3>INFORMATION</h3>
+              <a href="#">About Us</a>
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms & Conditions</a>
+              <a href="#">Contact Us</a>
+              <a href="#">Site Map</a>
+            </div>
+            <div class="footer-top__box">
+              <h3>MY ACCOUNT</h3>
+              <a href="#">My Account</a>
+              <a href="#">Order History</a>
+              <a href="#">Wish List</a>
+              <a href="#">Newsletter</a>
+              <a href="#">Returns</a>
+            </div>
+            <div class="footer-top__box">
+              <h3>CONTACT US</h3>
+              <div>
+                <span>
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                </span>
+                KUMARAGURU COLLEGE OF TECHNOLOGY, TAMILNADU ,INDIA.
+              </div>
+              <div>
+                <span>
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                </span>
+                Agrisales@outlook.com
+              </div>
+              <div>
+                <span>
+                  <i class='fas fa-phone-alt'></i>
+                </span>
+                00000001
+              </div>
+              <div>
+                <span>
+                  <i class="fa fa-paper-plane-o"></i>
+                </span>
+                KUMARAGURU COLLEGE OF TECHNOLOGY, COIMBATORE.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <div class="footer-bottom__box">
+      
+          </div>
+          <div class="footer-bottom__box">
+      
+          </div>
+        </div>
+    </div>
+      </footer>
+   
+      <!-- End Footer -->
+      
+      <script src="{% static 'home/js/products.js' %}"></script>
+      <script src="{% static 'home/js/index.js' %}"></script>
+      <script src="{% static 'home/js/slider.js' %}"></script>
+</body>
+      
+      

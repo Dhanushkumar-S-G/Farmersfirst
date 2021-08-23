@@ -1,0 +1,67 @@
+{% extends 'product/layout.html' %}
+{% block product %}
+<section class="section latest__products" id="latest">
+    <div class="title__container">
+        <div class="section__title active" data-id="Latest Products">
+            <span class="dot"></span>
+            <h1 class="primary__title">VIEW ORDERS</h1>
+        </div>
+    </div>
+</section>
+<main id="main">
+    <section class="section cart__area">
+        <div class="container">
+            <div class="responsive__cart-area">
+                <form class="cart__form">
+                    <div class="cart__table table-responsive">
+                        <table class="table" style="border:black;">
+                            <thead>
+                                <tr>
+                                    <th style="text-align: center; margin:auto;">USER NAME</th>
+                                    <th style="text-align: center; margin:auto;">PRODUCT NAME</th>
+                                    <th style="text-align: center; margin:auto"> PRICE</th>
+                                    <th style="text-align: center; margin:auto">QUANTITY</th>
+                                    <th style="text-align: center; margin:auto">DATE REQUIRED</th>
+                                    <th style="text-align: center; margin:auto">ADDRESS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {%for order in orders%}
+                                <tr>
+                                    <td class="product__name" style="text-align: center;">
+                                        {{order.user}}
+                                    </td>
+                                    <td class="product__name" style="text-align: center;">
+                                        {{order.product_name}}
+                                    </td>
+                                    <td class="product__price" style="text-align: center;">
+                                        <div class="price">
+                                            <span class="new__price">₹ {{order.price}}</span>
+                                        </div>
+                                    </td>
+                                    <td class="product__quantity" style="text-align: center;">
+                                    {{order.quantity}}
+                                    </td>
+                                    <td class="product__name" style="text-align: center;">
+                                        {{order.date_required}}
+                                    </td>
+                                    <td class="product__name" style="text-align: center;">
+                                        {{order.address}}
+                                    </td>
+                                    <td class="product__subtotal" style="text-align: center;">
+                                        <a href="#" class="remove__cart-item">
+                                            <i class='fas fa-trash-alt'></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {%endfor%}
+                            </tbody>
+                        </table>
+                    </div>
+                    </form>
+                    </div>
+                    </div>
+                    </section>
+                    </main>
+
+{%endblock %}

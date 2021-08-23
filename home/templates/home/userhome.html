@@ -1,0 +1,22 @@
+{% extends "home/layout.html"%}
+{%block admin%}
+{%if admin%}
+<li class="nav__item">
+  <a href="{{username}}/product/vieworders"  class="nav__link">Orders</a>
+</li>
+{%endif%}
+{%endblock%}
+{%block user%}
+
+<a class="icon__item"  style="border:none; background-color: white; " href='{{username}}/userprofile' >{{username}}</a>
+<a href="#" class="icon__item">
+<i class="fa fa-search" aria-hidden="true"></i>
+</a>
+
+<a href="{{username}}/cart" class="icon__item">
+  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+</a>
+<a href="/" class="icon__item">
+  <i class="fas fa-sign-out-alt"></i>
+  </a>  
+{%endblock%}

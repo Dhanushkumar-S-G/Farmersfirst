@@ -1,0 +1,62 @@
+{%extends "product/layout.html" %}
+{% load static %}
+{% block product %}
+<section class="section latest__products" id="latest">
+    <div class="title__container">
+        <div class="section__title active" data-id="Latest Products">
+            <span class="dot"></span>
+            <h1 class="primary__title">CONFIRM ORDER</h1>
+        </div>
+    </div>
+</section>
+<main id="main">
+    <section class="section cart__area">
+        <div class="container">
+            <div class="responsive__cart-area">
+                <form class="cart__form" method = 'POST'action = "/{{name}}/product/{{productname}}/confirmed">{%csrf_token%}
+                    <div class="cart__totals">
+                        <h3>Confirm Order</h3>
+                        <ul>
+                            <li>
+                                Name
+                                <span name = 'username' > {{name}}</span>
+                            </li>
+                            <li>
+                                Product Name
+                                <span name = 'productname' > {{productname}}</span>
+                            </li>
+                            <li>
+                                Price
+                                <span name = "price" class="new__price">₹ {{price}}</span>
+                            </li>
+                            <li>
+                                Quantity
+                                <span  > {{quantity}}</span>
+                                <input type = "text" value ="{{quantity}}" style = "border: none; display: none;" name = "quantity">
+                            </li>
+                            <li>
+                                Total
+                                <span name = 'total' class="new__price">₹ {{total}}</span>
+                            </li>
+                            <li>
+                                Date required<br>
+                                <span  > {{date_required}}</span>
+                                <input  type = "date" value = "{{date_required}}" name  = 'date_required' style="display: none;"> 
+                            </li>
+                            
+                            <li>
+                                Delivery Address<br>
+                                {%for addres in address%}
+                                <span name = 'address'> {{addres}}</span><br>
+                                {%endfor%}
+                            </li>
+                           
+                        </ul>
+                        <button type="submit">Confirm My Order</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+{%endblock%}
