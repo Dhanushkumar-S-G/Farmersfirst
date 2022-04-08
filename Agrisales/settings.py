@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-6))%7+h)vu3ulbd-z*_$k=*%9p=+2mg86gcq04t(d4%(5bz!!9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://limitless-castle-89195.herokuapp.com/','127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
